@@ -1,0 +1,24 @@
+{
+  "name": "mandes",
+  "version": "1.0.0",
+  "description": "A discord bot created for a server called 999",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/discord-999/Mandes.git~.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "mandes"
+  ],
+  "author": "Moein Hosseini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/discord-999/Mandes.git~/issues"
+  },
+  "homepage": "https://github.com/discord-999/Mandes.git~#readme"
+}
