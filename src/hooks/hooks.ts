@@ -3,7 +3,7 @@ import { Hook } from '../models/hook';
 import { Message } from 'discord.js';
 
 const hooksList: Hook[] = [
-    new OnlyMediaHook(['964585107124006963'])
+    new OnlyMediaHook(['835947472026599464'])
 ];
 
 export function hookRouter(msg: Message) {
