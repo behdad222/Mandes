@@ -28,9 +28,11 @@ export class CastBoxHook extends Hook {
             return;
         }
 
-        if (currentConnection?.state.status !== VoiceConnectionStatus.Destroyed) {
-            msg.reply('Sorry, Someone is already using this bot somewhere!');
-            return;
+        if (currentConnection) {
+            if (currentConnection?.state.status !== VoiceConnectionStatus.Destroyed) {
+                msg.reply('Sorry, Someone is already using this bot somewhere!');
+                return;
+            }
         }
 
         const msgArray = msg.content.split(' ');
