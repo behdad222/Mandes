@@ -1,7 +1,7 @@
 import { globalConfig } from '../config';
 import { Hook } from '../models/hook';
 import { Message } from 'discord.js';
-import { currentConnection } from '../services/stream-manager';
+import { currentConnection, player } from '../services/stream-manager';
 import { VoiceConnectionStatus } from '@discordjs/voice';
 
 export class DisconnectHook extends Hook {
@@ -30,6 +30,7 @@ export class DisconnectHook extends Hook {
                 if (currentConnection.state.status !== VoiceConnectionStatus.Destroyed) {
                     currentConnection.disconnect();
                     currentConnection.destroy();
+                    player.stop();
                 } else {
                     msg.reply('Hey man, Nobody is listening!');
                 }

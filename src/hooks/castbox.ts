@@ -4,8 +4,9 @@ import { Hook } from '../models/hook';
 import { Message } from 'discord.js';
 import { isUri } from 'valid-url';
 import axios from 'axios';
-import { connectToChannel, player } from '../services/stream-manager';
+import { connectToChannel, currentConnection, player } from '../services/stream-manager';
 import { playSong } from '../services/stream-manager';
+import { VoiceConnectionStatus } from '@discordjs/voice';
 
 export class CastBoxHook extends Hook {
     channels: string[] = [];
@@ -25,6 +26,11 @@ export class CastBoxHook extends Hook {
 
     async handler(msg: Message): Promise<void> {
         if (!msg.content.startsWith(globalConfig.commandTrigger + 'p')) {
+            return;
+        }
+
+        if (currentConnection.state.status !== VoiceConnectionStatus.Destroyed) {
+            msg.react('Sorry, Someone is already using this bot somewhere!');
             return;
         }
 
