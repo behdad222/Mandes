@@ -21,7 +21,7 @@ export class OnlyMediaHook extends Hook {
         const foundImage = msg.attachments.filter(a => a.contentType.includes('image') || a.contentType.includes('video'));
         const arr = Array.from(foundImage);
 
-        if (!arr.length) {
+        if (!arr.length && msg.type !== 'THREAD_CREATED') {
             await msg.author.createDM(true);
             await msg.author.dmChannel.send({
                 content: `
