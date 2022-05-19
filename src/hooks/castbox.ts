@@ -53,6 +53,7 @@ export class CastBoxHook extends Hook {
                     return;
                 }
 
+                msg.reply('Roger that!');
                 const connection = await connectToChannel(channel as any);
                 playSong(sourceUrl);
                 connection.subscribe(player);
