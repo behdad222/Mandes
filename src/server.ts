@@ -16,6 +16,7 @@ client.on('messageCreate', async (msg) => {
 });
 
 let token = process.env.TOKEN;
+token = 'OTUwNzczMTE4MzE2NzE2MTEy.GpiSdZ.TahlLNg4WTRnaRM092Vt8H63ThBkDS6Lj2Ap60'
 if (token) {
     client.login(token);
 }

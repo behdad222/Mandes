@@ -4,8 +4,7 @@ import { Hook } from '../models/hook';
 import { Message } from 'discord.js';
 import { isUri } from 'valid-url';
 import axios from 'axios';
-import { connectToChannel, currentConnection, player } from '../services/stream-manager';
-import { playSong } from '../services/stream-manager';
+import { connectToChannel, currentConnection, player, playSong } from '../services/stream-manager';
 import { VoiceConnectionStatus } from '@discordjs/voice';
 
 export class CastBoxHook extends Hook {
@@ -29,8 +28,8 @@ export class CastBoxHook extends Hook {
             return;
         }
 
-        if (currentConnection.state.status !== VoiceConnectionStatus.Destroyed) {
-            msg.react('Sorry, Someone is already using this bot somewhere!');
+        if (currentConnection?.state.status !== VoiceConnectionStatus.Destroyed) {
+            msg.reply('Sorry, Someone is already using this bot somewhere!');
             return;
         }
 
