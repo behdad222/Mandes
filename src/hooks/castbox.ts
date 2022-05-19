@@ -28,17 +28,16 @@ export class CastBoxHook extends Hook {
             return;
         }
 
-        if (currentConnection) {
-            if (currentConnection?.state.status !== VoiceConnectionStatus.Destroyed) {
-                msg.reply('Sorry, Someone is already using this bot somewhere!');
-                return;
-            }
-        }
-
         const msgArray = msg.content.split(' ');
         const url = msgArray[1];
 
-        if (isUri(url)) {
+        if (isUri(url) && url.includes("castbox.fm")) {
+            if (currentConnection) {
+                if (currentConnection?.state.status !== VoiceConnectionStatus.Destroyed) {
+                    msg.reply('Sorry, someone is already using this bot somewhere! If nobody is listening you can disconnect it using "=dc"');
+                    return;
+                }
+            }
             try {
                 console.log('Get response...');
                 const response = await axios.get(url);
@@ -61,7 +60,8 @@ export class CastBoxHook extends Hook {
             } catch (error) {
                 console.log(error);
             }
+        } else {
+            msg.reply('OOps! this url seems to be invalid. Right now I can only play from CastBox!');
         }
     }
 }
-
