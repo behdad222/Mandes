@@ -10,8 +10,6 @@ export class TicketHook extends Hook {
     }
 
     isEligible(msg: Message<boolean>): boolean {
-        console.log(msg.channel.type);
-
         if (msg.channel.type !== 'DM') {
             return false;
         }
